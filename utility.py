@@ -16,6 +16,13 @@ def trim_strings(x):
         return x.split("\n")[0] + "[...]"
     else:
         return x      
+        
+def intersection(lst1, lst2): 
+  
+    # Use of hybrid method 
+    temp = set(lst2) 
+    lst3 = [value for value in set(lst1) if value in temp] 
+    return lst3         
 
 def corr_simple_pearsonr(df1,df2, mask=1, round_places=2):
     mask = df1.notnull()&df2.notnull()&mask
@@ -107,3 +114,136 @@ def make_corr_summary(input_df, name,  corr_type = "spearman", pattern=None, sam
             stub_dict[waveless] = [ind]
     df.drop(drop_list,inplace=True)
     return df, corr_type    
+    
+
+def display_components(n_components, decomp, cols, BES_decomp, manifest, 
+                       save_folder = False, show_first_x_comps=4,
+                       show_histogram=True, flip_axes=True):
+    
+    if hasattr(decomp, 'coef_'):
+        decomp_components = decomp.coef_
+    elif hasattr(decomp, 'components_'):
+        decomp_components = decomp.components_
+    else:
+        raise ValueError('no component attribute in decomp')    
+
+    # hardcoded at 20?    
+    n_comps = min(n_components,20)
+    comp_labels = {}
+    comp_dict = {}
+
+    for comp_no in range(0,n_comps):
+
+        fig, axes = plt.subplots(ncols=1+show_histogram)
+        
+        comp = pd.DataFrame( decomp_components[comp_no], index = cols, columns = ["components_"] )
+        comp["comp_absmag"] = comp["components_"].abs()
+        comp = comp.sort_values(by="comp_absmag",ascending=True)        
+        
+        if show_histogram:
+            comp_ax = axes[0]
+            
+            hist_ax = axes[1]
+            hist_ax.set_xlabel("abs. variable coeffs")
+            hist_ax.set_title("Histogram of abs. variable coeffs")
+            comp["comp_absmag"].hist( bins=30, ax=hist_ax, figsize=(10,6) )
+            
+        else:
+            comp_ax = axes
+            
+        # set top abs_mag variable to label
+        comp_labels[comp_no] = comp.index[-1:][0] # last label (= highest magnitude)
+        # if top abs_mag variable is negative
+     
+        if flip_axes & (comp[-1:]["components_"].values[0] < 0):
+
+            comp["components_"]         = -comp["components_"]
+            decomp_components[comp_no]  = -decomp_components[comp_no]
+            BES_decomp[comp_no]         = -BES_decomp[comp_no]
+
+        dataset_description = manifest["Friendlier_Description"].values[0]
+        title = "Comp. "+str(comp_no)+" (" + comp.index[-1:][0] + ")"
+        comp_labels[comp_no] = title
+        comp_ax.set_title( dataset_description + "\n" + title )
+        comp_ax.set_xlabel("variable coeffs")
+        xlim = (min(comp["components_"].min(),-1) , max(comp["components_"].max(),1) )
+        comp["components_"].tail(30).plot( kind='barh', ax=comp_ax, figsize=(10,6), xlim=xlim )
+        dataset_citation = "Source: " + manifest["Citation"].values[0]
+
+        if (save_folder != False):
+            comp_ax.annotate(dataset_citation, (0,0), (0, -40),
+                             xycoords='axes fraction', textcoords='offset points', va='top', fontsize = 7)            
+            fname = save_folder + clean_filename(title) + ".png"
+            fig.savefig( fname, bbox_inches='tight' )
+
+        comp_dict[comp_no] = comp
+        # show first x components
+        if (comp_no >= min(show_first_x_comps,n_components)):
+            plt.close()
+
+        
+    return (BES_decomp, comp_labels, comp_dict)
+    
+
+def display_pca_data(n_components, decomp, BES_std, y=[]):    
+    
+    figsz = (16,3)
+    
+    f, axs = plt.subplots( 1, 4, figsize=figsz )
+
+    axno = 0
+    
+    if hasattr(decomp, 'explained_variance_ratio_'):
+        print('explained variance ratio (first 30): %s'
+              % str(decomp.explained_variance_ratio_[0:30]) )
+        
+    if hasattr(decomp, 'explained_variance_'):
+        print('explained variance (first 30): %s'
+              % str(decomp.explained_variance_[0:30]) )
+
+        axs[axno].plot( range(1,n_components+1), decomp.explained_variance_, linewidth=2)
+        # ,figsize = figsz)
+        axs[axno].set_xlabel('n_components')
+        axs[axno].set_ylabel('explained_variance_')
+        axs[axno].set_title('explained variance by n_components')
+        axno = axno + 1
+        
+    if hasattr(decomp, 'noise_variance_'): 
+        if isinstance(decomp.noise_variance_, float):
+            print('noise variance: %s'
+                  % str(decomp.noise_variance_) )
+        
+    if hasattr(decomp, 'score'):
+        if len(y)==0:
+            print('average log-likelihood of all samples: %s'
+                  % str(decomp.score(BES_std)) )
+        else:
+            print('mean classification accuracy (harsh if many cats.): %s'
+                  % str(decomp.score(BES_std, y)) )
+        
+    if hasattr(decomp, 'score_samples') and not np.isinf( decomp.score(BES_std) ):
+        pd.DataFrame( decomp.score_samples(BES_std) ).hist(bins=100,figsize = figsz, ax=axs[axno])
+        axs[axno].set_xlabel('log likelihood')
+        axs[axno].set_ylabel('frequency')
+        axs[axno].set_title('LL of samples')
+        axno = axno + 1
+
+    if hasattr(decomp, 'n_iter_'):
+        print('number of iterations: %s'
+              % str(decomp.n_iter_) )
+        
+    if hasattr(decomp, 'loglike_'):
+        axs[axno].plot( decomp.loglike_, linewidth=2) # ,figsize = figsz)
+        axs[axno].set_xlabel('n_iter')
+        axs[axno].set_ylabel('log likelihood')
+        axs[axno].set_title('LL by iter')
+        axno = axno + 1
+
+    if hasattr(decomp, 'error_'):
+
+        axs[axno].plot( decomp.error_, linewidth=2, figsize = figsz)
+        axs[axno].set_xlabel('n_iter')
+        axs[axno].set_ylabel('error')
+        axs[axno].set_title('LL by iter')
+        axno = axno + 1
+        
