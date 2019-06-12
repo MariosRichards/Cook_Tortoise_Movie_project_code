@@ -159,6 +159,7 @@ def create_subdir(base_dir, subdir, char_limit=50):
         os.makedirs( output_subfolder )
     return output_subfolder
     
+
 def display_components(n_components, decomp, cols, BES_decomp, manifest, 
                        save_folder = False, show_first_x_comps=4,
                        show_histogram=True, flip_axes=True):
@@ -204,21 +205,29 @@ def display_components(n_components, decomp, cols, BES_decomp, manifest,
             decomp_components[comp_no]  = -decomp_components[comp_no]
             BES_decomp[comp_no]         = -BES_decomp[comp_no]
 
-        dataset_description = manifest["Friendlier_Description"].values[0]
-        title = "Comp. "+str(comp_no)+" (" + comp.index[-1:][0] + ")"
-        comp_labels[comp_no] = title
-        comp_ax.set_title( dataset_description + "\n" + title )
-        comp_ax.set_xlabel("variable coeffs")
-        xlim = (min(comp["components_"].min(),-1) , max(comp["components_"].max(),1) )
-        comp["components_"].tail(30).plot( kind='barh', ax=comp_ax, figsize=(10,6), xlim=xlim )
-        dataset_citation = "Source: " + manifest["Citation"].values[0]
+        if manifest is not None:
+            dataset_description = manifest["Friendlier_Description"].values[0]
+            title = "Comp. "+str(comp_no)+" (" + comp.index[-1:][0] + ")"
+            comp_labels[comp_no] = title
+            comp_ax.set_title( dataset_description + "\n" + title )
+            comp_ax.set_xlabel("variable coeffs")
+            xlim = (min(comp["components_"].min(),-1) , max(comp["components_"].max(),1) )
+            comp["components_"].tail(30).plot( kind='barh', ax=comp_ax, figsize=(10,6), xlim=xlim )
+            dataset_citation = "Source: " + manifest["Citation"].values[0]
 
-        if (save_folder != False):
-            comp_ax.annotate(dataset_citation, (0,0), (0, -40),
-                             xycoords='axes fraction', textcoords='offset points', va='top', fontsize = 7)            
-            fname = save_folder + clean_filename(title) + ".png"
-            fig.savefig( fname, bbox_inches='tight' )
-
+            if (save_folder != False):
+                comp_ax.annotate(dataset_citation, (0,0), (0, -40),
+                                 xycoords='axes fraction', textcoords='offset points', va='top', fontsize = 7)            
+                fname = save_folder + clean_filename(title) + ".png"
+                fig.savefig( fname, bbox_inches='tight' )
+        else:
+            title = "Comp. "+str(comp_no)+" (" + comp.index[-1:][0] + ")"
+            comp_labels[comp_no] = title
+            comp_ax.set_title( title )
+            comp_ax.set_xlabel("variable coeffs")    
+            xlim = (min(comp["components_"].min(),-1) , max(comp["components_"].max(),1) )
+            comp["components_"].tail(30).plot( kind='barh', ax=comp_ax, figsize=(10,6), xlim=xlim )
+            
         comp_dict[comp_no] = comp
         # show first x components
         if (comp_no >= min(show_first_x_comps,n_components)):
@@ -289,4 +298,96 @@ def display_pca_data(n_components, decomp, BES_std, y=[]):
         axs[axno].set_ylabel('error')
         axs[axno].set_title('LL by iter')
         axno = axno + 1
+    
+    
+
+def display_pca_data(n_components, decomp, BES_std, y=[]):    
+    
+    figsz = (16,3)
+    
+    f, axs = plt.subplots( 1, 4, figsize=figsz )
+
+    axno = 0
+    
+    if hasattr(decomp, 'explained_variance_ratio_'):
+        print('explained variance ratio (first 30): %s'
+              % str(decomp.explained_variance_ratio_[0:30]) )
         
+    if hasattr(decomp, 'explained_variance_'):
+        print('explained variance (first 30): %s'
+              % str(decomp.explained_variance_[0:30]) )
+
+        axs[axno].plot( range(1,n_components+1), decomp.explained_variance_, linewidth=2)
+        # ,figsize = figsz)
+        axs[axno].set_xlabel('n_components')
+        axs[axno].set_ylabel('explained_variance_')
+        axs[axno].set_title('explained variance by n_components')
+        axno = axno + 1
+        
+    if hasattr(decomp, 'noise_variance_'): 
+        if isinstance(decomp.noise_variance_, float):
+            print('noise variance: %s'
+                  % str(decomp.noise_variance_) )
+        
+    if hasattr(decomp, 'score'):
+        if len(y)==0:
+            print('average log-likelihood of all samples: %s'
+                  % str(decomp.score(BES_std)) )
+        else:
+            print('mean classification accuracy (harsh if many cats.): %s'
+                  % str(decomp.score(BES_std, y)) )
+        
+    if hasattr(decomp, 'score_samples') and not np.isinf( decomp.score(BES_std) ):
+        pd.DataFrame( decomp.score_samples(BES_std) ).hist(bins=100,figsize = figsz, ax=axs[axno])
+        axs[axno].set_xlabel('log likelihood')
+        axs[axno].set_ylabel('frequency')
+        axs[axno].set_title('LL of samples')
+        axno = axno + 1
+
+    if hasattr(decomp, 'n_iter_'):
+        print('number of iterations: %s'
+              % str(decomp.n_iter_) )
+        
+    if hasattr(decomp, 'loglike_'):
+        axs[axno].plot( decomp.loglike_, linewidth=2) # ,figsize = figsz)
+        axs[axno].set_xlabel('n_iter')
+        axs[axno].set_ylabel('log likelihood')
+        axs[axno].set_title('LL by iter')
+        axno = axno + 1
+
+    if hasattr(decomp, 'error_'):
+
+        axs[axno].plot( decomp.error_, linewidth=2, figsize = figsz)
+        axs[axno].set_xlabel('n_iter')
+        axs[axno].set_ylabel('error')
+        axs[axno].set_title('LL by iter')
+        axno = axno + 1
+        
+        
+# transform a column of data until it's as approximately normally distributed as can be
+# because most Machine Learning/Statistical methods assume data is ~normally distributed
+# basically, what people normally do randomly logging/square-rooting data, only automatically
+
+from scipy import stats
+def box_cox_normalise(ser, offset = 3, bw='scott'):
+    
+    
+    # box cox lr_scale
+    fig = plt.figure()
+    ax1 = fig.add_subplot(311)
+    x = ser.values +ser.values.min()+offset
+    prob = stats.probplot(x, dist=stats.norm, plot=ax1)
+    ax1.set_xlabel('')
+    ax1.set_title('Probplot against normal distribution')
+    ax2 = fig.add_subplot(312)
+    xt, _ = stats.boxcox(x)
+    prob = stats.probplot(xt, dist=stats.norm, plot=ax2)
+    ax2.set_title('Probplot after Box-Cox transformation')
+    ax3 = fig.add_subplot(313)
+    xt_std = (xt-xt.mean())/xt.std()
+    sns.kdeplot(xt_std, ax=ax3, bw=bw, cut=0);
+    sns.kdeplot(np.random.normal(size=len(xt_std)), ax=ax3, cut=0);
+    plt.suptitle(ser.name)
+    return xt_std
+    
+    
