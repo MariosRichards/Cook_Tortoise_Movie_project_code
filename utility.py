@@ -12,7 +12,7 @@ from scipy.stats import pearsonr, spearmanr
 
 def match(df, pattern, case_sensitive=True, mask=None):
     if mask is None:
-           mask = pd.Series(np.ones( (df.shape[0]) )).astype('bool')
+           mask = pd.Series(np.ones( (df.shape[0]) )).astype('bool').values
     if case_sensitive:
         return df[[x for x in df.columns if re.match(pattern,x)]][mask].notnull().sum()
     else:
@@ -20,7 +20,7 @@ def match(df, pattern, case_sensitive=True, mask=None):
 
 def search(df, pattern, case_sensitive=False, mask=None):
     if mask is None:
-           mask = pd.Series(np.ones( (df.shape[0]) )).astype('bool')
+        mask = pd.Series(np.ones( (df.shape[0]) )).astype('bool').values
     if case_sensitive:
         return df[[x for x in df.columns if re.search(pattern,x)]][mask].notnull().sum()
     else:
