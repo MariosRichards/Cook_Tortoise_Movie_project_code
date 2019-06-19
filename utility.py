@@ -516,9 +516,9 @@ def get_non_overfit_settings( train, target, alg, seed, early_stoppping_fraction
     print("MSE: %.2f, MAE: %.2f, EV: %.2f, R2: %.2f" % (MSE, MAE, EV, R2) )
     alg.set_params(n_estimators=alg.best_iteration)            
     
-def xgboost_run(title, subdir=None, min_features=30, dependence_plots=False , output_folder=".."+os.sep+"Output"+os.sep):
+def xgboost_run(title, subdir=None, min_features=30, dependence_plots=False , output_folder=".."+os.sep+"Output"+os.sep,Treatment="default"):
     # for target_var,base_var in zip(var_list,base_list):
-    treatment_subfolder = create_subdir(output_folder,"xgb_census"+Treatment)
+    treatment_subfolder = create_subdir(output_folder,Treatment)
 
     for target_var in var_list:
         if sample_wts:
