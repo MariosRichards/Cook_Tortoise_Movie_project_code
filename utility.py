@@ -40,6 +40,8 @@ def trim_strings(x):
     else:
         return x      
         
+flatten = lambda l: [item for sublist in l for item in sublist]        
+        
 def intersection(lst1, lst2): 
   
     # Use of hybrid method 
