@@ -1,0 +1,86 @@
+* Specifically, this is the variable breakdown for "INT_df_with_dates_and_genres.msgpack" (zipped when shared over google drive) but the same variables in different dataframes should be identical and the conventions won't be changed.
+
+* This dataset was created by merging several different datasources. Variables generated directed from those sources will have a CAPITALISED underscore terminated prefix relating directly to the source (e.g. NUM_blah refers to a variable taken from the the-numbers.com dataset)
+
+* The notebook that does that merging is hosted here on github(https://github.com/MariosRichards/Cook_Tortoise_Movie_project_code/blob/master/Dataset%20Inventory.ipynb) and is readable. It's not perfectly commented code, but you can do a ctrl-F find on the variable name and go to a section which will either have the "what is this" information you want in the comments *or* the link to the original datasource with the full explanation of what they mean (variable names I've created I've tried to make human legible, but I also tried to keep the original variable names from source datasets so it would be easy to backtrack them)
+
+* Variables that *don't* have a CAPITALISED data source prefix are ones I've created by actively integrating/harmonising data across multiple data sources. E.g. 4 difference sources have columns with some irregularly overlapping release data information. I've rationalised that into one set of release date variables:
+
+- release_decade, release_year, release_month, release_day -> directly useful
+- release_day_of_the_month, release_weekday_text, release_month_text -> mostly just cute value
+(heads up - we sometimes know the year but not the day/month - don't assume the pattern of missing values is identical for all release_date variables)
+
+I've done something similar with movie genre
+- genre__<genre category>
+- genre_categories = [ Adventure, Animation, Children, Comedy, Fantasy, Romance, Drama, Action, Crime, Thriller,
+Horror, Mystery, Sci-Fi, IMAX, Documentary, War, Musical, Western, Film-Noir, History, Music, TV Movie ]
+
+
+* Another part of the dataset processing that requires some explanation is cast_crew aggregation. For the TheMoviesDatabase (TMB) data we have a large set of (but incomplete - all this stuff is just added by random members of the public!) cast and crew data. But that's a whole pair of datastructures per movie - to turn it into a set of per-movie values (to do machine learning on/to visualise) requires some sort of aggregation. (Here's the notebook that creates these - it's v. messy currently: https://github.com/MariosRichards/Cook_Tortoise_Movie_project_code/blob/master/Create_cast_crew_aggregates_for_tmbd.ipynb)
+
+
+TMB_<(per person)variable>_(cast|crew)_<Aggregation_function>
+
+Aggregation_functions_list = [lead,second,lead5,mean]
+
+* lead = (variable value for) top cast/crew member by (billing) order
+* second = (variable value for) second-from-top cast/crew member by (billing) order
+* lead5 = (mean average of the variable value for) top 5 cast/crew members by (billing) order
+(at some point I also did lead10/lead5 depending on whether it was cast/crew because they have differnet median sizes - but on inspection it doesn't make enough of a difference to justify the extra complexity)
+* leading_man   = (variable value for) top *male* cast/crew member by (billing) order
+* leading_woman = (variable value for) top *female* cast/crew member by (billing) order
+(note that there *a lot* of instances where we don't have gender information for cast/crew - this is much less of a problem for top/high billing order cast than crew - these functions skip past cast/crew members who have no gender information so you can't be 100% sure you're seeing the value for the highest billing man/woman ... to be fair, you also can't be 100% sure about the gender information - it's ~90% consistent)
+
+
+# credit_number - number of credits this cast/crew member has in movies (other than this one!)
+# gender_guess_integrated - gender of cast/crew member 0=Female, 1=Male (based on human input values in themoviedatabase with *some* of the blanks filled in by python gender_guesser module using the cast/crew member name - many blank values remain!)
+# adult - cast/crew member tagged as "adult" performer - as in, pornography, not as in "over X years in age"
+# popularity - a bit complex, but this is a dynamic ranking for the themoviesdatabase site https://developers.themoviedb.org/3/getting-started/popularity
+# cast_crew_overlap - boolean value (1 if a given individual appears in both crew and cast datasets for any movie at all, 0 otherwise)
+
+("order" is billing order (0 is top billing, 1 is second place ...), it's definitely meaningful for cast, there's a question mark over whether it's meaningful for crew)
+# mean_order - mean order for a given cast/crew member over all movies that individual has cast/crew credits for (e.g. you tend to be in top billing your mean_order ~ 0)
+# fractional_mean_order - same but with fractional_order (0...1) instead of nominal order (0,1,2,3 .... N=howevery many cast/crew in a given movie)
+# importulence - mixture of credit_number and fractional_order designed to balance "being in lots of movies" against "mean fractional position in those movies"
+
+(these two variables are crew only)
+# job_number - number of different jobs listed for a given crew member across all their credits (e.g. Director, Screenwriter)
+# department_number - number of different departments listed for a given crew member across all their credits (e.g. Directing, Writing)
+
+(birth/death dates stored as years since a fixed date so it can be (i) a single number (ii) we can keep the data even when we don't know the release date of the movie)
+# birth_yrs_rel_1900 - individual cast/crew member birth date relative to 1/1/1900 in years (fractions included!)
+# death_yrs_rel_1900 - individual cast/crew member birth date relative to 1/1/1900 in years (fractions included!)
+# life_span - individual cast/crew member lifespan in years (fractions included!)
+
+# age_at_release - this is simply individual birth date relative to movie release date
+# years_until_death - this is simply individual death date relative to movie release date
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
