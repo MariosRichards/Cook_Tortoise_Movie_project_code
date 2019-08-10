@@ -55,8 +55,7 @@ Aggregation_functions_list = [lead,second,lead5,mean]
 # age_at_release - this is simply individual birth date relative to movie release date
 # years_until_death - this is simply individual death date relative to movie release date
 
-
-
+(I've updated the dataframe in the shared google drive folder so you have all this data - be warned, I've used the data to chase down easily fixable errors in the original data, but there's a whole load that aren't easily fixable (actors from different centuries with same name and single account at themoviesdatabase). Until I bite the bullet and decide the least bad way to resolve that, you'll have to rationalise the data before use (e.g. throw out age values <=0 and >=120))
 
 
 
