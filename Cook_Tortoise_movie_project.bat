@@ -1,0 +1,2 @@
+cd C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code
+activate Cook_Tortoise_Imdb_project

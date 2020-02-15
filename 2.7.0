@@ -1,0 +1,201 @@
+Collecting package metadata (current_repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: C:\ProgramData\Anaconda3\envs\Cook_Tortoise_Imdb_project
+
+  added / updated specs:
+    - h5py
+    - keras
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    absl-py-0.9.0              |           py36_0         162 KB  conda-forge
+    astor-0.7.1                |             py_0          22 KB  conda-forge
+    gast-0.3.3                 |             py_0          12 KB  conda-forge
+    grpcio-1.23.0              |   py36h3db2c7e_0         1.0 MB  conda-forge
+    h5py-2.10.0                |nompi_py36h422b98e_102         936 KB  conda-forge
+    hdf5-1.10.5                |nompi_ha405e13_1104        35.1 MB  conda-forge
+    keras-2.3.1                |   py36h21ff451_0         589 KB  conda-forge
+    keras-applications-1.0.8   |             py_1          30 KB  conda-forge
+    keras-preprocessing-1.1.0  |             py_0          33 KB  conda-forge
+    libgpuarray-0.7.6          |    hfa6e2cd_1003         314 KB  conda-forge
+    mako-1.1.0                 |             py_0          57 KB  conda-forge
+    markdown-3.2               |             py_0          61 KB  conda-forge
+    protobuf-3.8.0             |   py36he025d50_2         569 KB  conda-forge
+    pygpu-0.7.6                |py36hc8d92b1_1000         594 KB  conda-forge
+    pyreadline-2.1             |        py36_1001         141 KB  conda-forge
+    tensorboard-1.13.1         |           py36_0         3.3 MB  conda-forge
+    tensorflow-1.13.2          |       h21ff451_0          22 KB  conda-forge
+    tensorflow-base-1.13.2     |           py36_0        52.5 MB  conda-forge
+    tensorflow-estimator-1.13.0|   py36h39e3cac_0         475 KB  conda-forge
+    termcolor-1.1.0            |             py_2           6 KB  conda-forge
+    theano-1.0.4               |py36h6538335_1001         3.7 MB  conda-forge
+    vs2015_win-64-14.0.25420   |      h55c1224_11           7 KB
+    werkzeug-1.0.0             |             py_0         238 KB  conda-forge
+    ------------------------------------------------------------
+                                           Total:        99.8 MB
+
+The following NEW packages will be INSTALLED:
+
+  absl-py            conda-forge/win-64::absl-py-0.9.0-py36_0
+  astor              conda-forge/noarch::astor-0.7.1-py_0
+  gast               conda-forge/noarch::gast-0.3.3-py_0
+  grpcio             conda-forge/win-64::grpcio-1.23.0-py36h3db2c7e_0
+  h5py               conda-forge/win-64::h5py-2.10.0-nompi_py36h422b98e_102
+  hdf5               conda-forge/win-64::hdf5-1.10.5-nompi_ha405e13_1104
+  keras              conda-forge/win-64::keras-2.3.1-py36h21ff451_0
+  keras-applications conda-forge/noarch::keras-applications-1.0.8-py_1
+  keras-preprocessi~ conda-forge/noarch::keras-preprocessing-1.1.0-py_0
+  libgpuarray        conda-forge/win-64::libgpuarray-0.7.6-hfa6e2cd_1003
+  mako               conda-forge/noarch::mako-1.1.0-py_0
+  markdown           conda-forge/noarch::markdown-3.2-py_0
+  protobuf           conda-forge/win-64::protobuf-3.8.0-py36he025d50_2
+  pygpu              conda-forge/win-64::pygpu-0.7.6-py36hc8d92b1_1000
+  pyreadline         conda-forge/win-64::pyreadline-2.1-py36_1001
+  tensorboard        conda-forge/win-64::tensorboard-1.13.1-py36_0
+  tensorflow         conda-forge/win-64::tensorflow-1.13.2-h21ff451_0
+  tensorflow-base    conda-forge/win-64::tensorflow-base-1.13.2-py36_0
+  tensorflow-estima~ conda-forge/win-64::tensorflow-estimator-1.13.0-py36h39e3cac_0
+  termcolor          conda-forge/noarch::termcolor-1.1.0-py_2
+  theano             conda-forge/win-64::theano-1.0.4-py36h6538335_1001
+  vs2015_win-64      pkgs/main/win-64::vs2015_win-64-14.0.25420-h55c1224_11
+  werkzeug           conda-forge/noarch::werkzeug-1.0.0-py_0
+
+
+Proceed ([y]/n)? 
+
+Downloading and Extracting Packages
+absl-py-0.9.0        | 162 KB    |            |   0% absl-py-0.9.0        | 162 KB    | 9          |  10% absl-py-0.9.0        | 162 KB    | #######9   |  79% absl-py-0.9.0        | 162 KB    | ########## | 100% 
+tensorflow-1.13.2    | 22 KB     |            |   0% tensorflow-1.13.2    | 22 KB     | #######3   |  73% tensorflow-1.13.2    | 22 KB     | ########## | 100% 
+tensorflow-estimator | 475 KB    |            |   0% tensorflow-estimator | 475 KB    | 3          |   3% tensorflow-estimator | 475 KB    | ########## | 100% 
+hdf5-1.10.5          | 35.1 MB   |            |   0% hdf5-1.10.5          | 35.1 MB   |            |   0% hdf5-1.10.5          | 35.1 MB   | 3          |   3% hdf5-1.10.5          | 35.1 MB   | 5          |   5% hdf5-1.10.5          | 35.1 MB   | 7          |   8% hdf5-1.10.5          | 35.1 MB   | 9          |  10% hdf5-1.10.5          | 35.1 MB   | #2         |  12% hdf5-1.10.5          | 35.1 MB   | #5         |  16% hdf5-1.10.5          | 35.1 MB   | #8         |  18% hdf5-1.10.5          | 35.1 MB   | ##1        |  21% hdf5-1.10.5          | 35.1 MB   | ##4        |  24% hdf5-1.10.5          | 35.1 MB   | ##6        |  27% hdf5-1.10.5          | 35.1 MB   | ##8        |  29% hdf5-1.10.5          | 35.1 MB   | ###1       |  31% hdf5-1.10.5          | 35.1 MB   | ###3       |  33% hdf5-1.10.5          | 35.1 MB   | ####       |  40% hdf5-1.10.5          | 35.1 MB   | ####3      |  44% hdf5-1.10.5          | 35.1 MB   | ####7      |  48% hdf5-1.10.5          | 35.1 MB   | #####      |  51% hdf5-1.10.5          | 35.1 MB   | #####3     |  54% hdf5-1.10.5          | 35.1 MB   | #####6     |  56% hdf5-1.10.5          | 35.1 MB   | #####9     |  59% hdf5-1.10.5          | 35.1 MB   | ######2    |  62% hdf5-1.10.5          | 35.1 MB   | ######5    |  65% hdf5-1.10.5          | 35.1 MB   | ######8    |  68% hdf5-1.10.5          | 35.1 MB   | #######1   |  71% hdf5-1.10.5          | 35.1 MB   | #######4   |  74% hdf5-1.10.5          | 35.1 MB   | #######8   |  78% hdf5-1.10.5          | 35.1 MB   | ########1  |  82% hdf5-1.10.5          | 35.1 MB   | ########5  |  85% hdf5-1.10.5          | 35.1 MB   | ########8  |  88% hdf5-1.10.5          | 35.1 MB   | #########1 |  91% hdf5-1.10.5          | 35.1 MB   | #########4 |  94% hdf5-1.10.5          | 35.1 MB   | #########6 |  97% hdf5-1.10.5          | 35.1 MB   | ########## | 100% 
+gast-0.3.3           | 12 KB     |            |   0% gast-0.3.3           | 12 KB     | ########## | 100% 
+h5py-2.10.0          | 936 KB    |            |   0% h5py-2.10.0          | 936 KB    | ###2       |  32% h5py-2.10.0          | 936 KB    | ########## | 100% 
+termcolor-1.1.0      | 6 KB      |            |   0% termcolor-1.1.0      | 6 KB      | ########## | 100% 
+keras-applications-1 | 30 KB     |            |   0% keras-applications-1 | 30 KB     | ########## | 100% 
+libgpuarray-0.7.6    | 314 KB    |            |   0% libgpuarray-0.7.6    | 314 KB    | ####       |  41% libgpuarray-0.7.6    | 314 KB    | ########## | 100% 
+theano-1.0.4         | 3.7 MB    |            |   0% theano-1.0.4         | 3.7 MB    | 6          |   6% theano-1.0.4         | 3.7 MB    | ##9        |  29% theano-1.0.4         | 3.7 MB    | #####1     |  51% theano-1.0.4         | 3.7 MB    | ########1  |  82% theano-1.0.4         | 3.7 MB    | ########## | 100% 
+tensorflow-base-1.13 | 52.5 MB   |            |   0% tensorflow-base-1.13 | 52.5 MB   |            |   0% tensorflow-base-1.13 | 52.5 MB   |            |   0% tensorflow-base-1.13 | 52.5 MB   | 1          |   1% tensorflow-base-1.13 | 52.5 MB   | 2          |   3% tensorflow-base-1.13 | 52.5 MB   | 4          |   5% tensorflow-base-1.13 | 52.5 MB   | 6          |   7% tensorflow-base-1.13 | 52.5 MB   | 8          |   8% tensorflow-base-1.13 | 52.5 MB   | 9          |  10% tensorflow-base-1.13 | 52.5 MB   | #2         |  13% tensorflow-base-1.13 | 52.5 MB   | #4         |  15% tensorflow-base-1.13 | 52.5 MB   | #6         |  16% tensorflow-base-1.13 | 52.5 MB   | #8         |  18% tensorflow-base-1.13 | 52.5 MB   | ##         |  20% tensorflow-base-1.13 | 52.5 MB   | ##1        |  22% tensorflow-base-1.13 | 52.5 MB   | ##3        |  23% tensorflow-base-1.13 | 52.5 MB   | ##4        |  25% tensorflow-base-1.13 | 52.5 MB   | ##7        |  28% tensorflow-base-1.13 | 52.5 MB   | ##9        |  30% tensorflow-base-1.13 | 52.5 MB   | ###1       |  31% tensorflow-base-1.13 | 52.5 MB   | ###3       |  33% tensorflow-base-1.13 | 52.5 MB   | ###5       |  35% tensorflow-base-1.13 | 52.5 MB   | ###7       |  37% tensorflow-base-1.13 | 52.5 MB   | ###9       |  40% tensorflow-base-1.13 | 52.5 MB   | ####1      |  42% tensorflow-base-1.13 | 52.5 MB   | ####3      |  44% tensorflow-base-1.13 | 52.5 MB   | ####5      |  45% tensorflow-base-1.13 | 52.5 MB   | ####7      |  47% tensorflow-base-1.13 | 52.5 MB   | ####9      |  50% tensorflow-base-1.13 | 52.5 MB   | #####1     |  51% tensorflow-base-1.13 | 52.5 MB   | #####3     |  53% tensorflow-base-1.13 | 52.5 MB   | #####5     |  56% tensorflow-base-1.13 | 52.5 MB   | #####7     |  58% tensorflow-base-1.13 | 52.5 MB   | #####9     |  60% tensorflow-base-1.13 | 52.5 MB   | ######1    |  62% tensorflow-base-1.13 | 52.5 MB   | ######3    |  64% tensorflow-base-1.13 | 52.5 MB   | ######5    |  66% tensorflow-base-1.13 | 52.5 MB   | ######9    |  70% tensorflow-base-1.13 | 52.5 MB   | #######1   |  72% tensorflow-base-1.13 | 52.5 MB   | #######3   |  74% tensorflow-base-1.13 | 52.5 MB   | #######6   |  76% tensorflow-base-1.13 | 52.5 MB   | #######8   |  78% tensorflow-base-1.13 | 52.5 MB   | ########   |  80% tensorflow-base-1.13 | 52.5 MB   | ########1  |  82% tensorflow-base-1.13 | 52.5 MB   | ########5  |  85% tensorflow-base-1.13 | 52.5 MB   | ########7  |  87% tensorflow-base-1.13 | 52.5 MB   | ########9  |  90% tensorflow-base-1.13 | 52.5 MB   | #########1 |  92% tensorflow-base-1.13 | 52.5 MB   | #########3 |  94% tensorflow-base-1.13 | 52.5 MB   | #########5 |  96% tensorflow-base-1.13 | 52.5 MB   | #########7 |  98% tensorflow-base-1.13 | 52.5 MB   | #########9 | 100% tensorflow-base-1.13 | 52.5 MB   | ########## | 100% 
+grpcio-1.23.0        | 1.0 MB    |            |   0% grpcio-1.23.0        | 1.0 MB    | 1          |   2% grpcio-1.23.0        | 1.0 MB    | ##4        |  24% grpcio-1.23.0        | 1.0 MB    | ######3    |  64% grpcio-1.23.0        | 1.0 MB    | ########## | 100% 
+pyreadline-2.1       | 141 KB    |            |   0% pyreadline-2.1       | 141 KB    | ########## | 100% 
+astor-0.7.1          | 22 KB     |            |   0% astor-0.7.1          | 22 KB     | ########## | 100% 
+tensorboard-1.13.1   | 3.3 MB    |            |   0% tensorboard-1.13.1   | 3.3 MB    |            |   0% tensorboard-1.13.1   | 3.3 MB    | ##4        |  25% tensorboard-1.13.1   | 3.3 MB    | #####4     |  55% tensorboard-1.13.1   | 3.3 MB    | ########2  |  83% tensorboard-1.13.1   | 3.3 MB    | ########## | 100% 
+mako-1.1.0           | 57 KB     |            |   0% mako-1.1.0           | 57 KB     | ########## | 100% 
+keras-preprocessing- | 33 KB     |            |   0% keras-preprocessing- | 33 KB     | ####8      |  48% keras-preprocessing- | 33 KB     | ########## | 100% 
+keras-2.3.1          | 589 KB    |            |   0% keras-2.3.1          | 589 KB    | ###2       |  33% keras-2.3.1          | 589 KB    | ########## | 100% 
+vs2015_win-64-14.0.2 | 7 KB      |            |   0% vs2015_win-64-14.0.2 | 7 KB      | ########## | 100% 
+markdown-3.2         | 61 KB     |            |   0% markdown-3.2         | 61 KB     | ########## | 100% 
+pygpu-0.7.6          | 594 KB    |            |   0% pygpu-0.7.6          | 594 KB    | 2          |   3% pygpu-0.7.6          | 594 KB    | ########## | 100% 
+protobuf-3.8.0       | 569 KB    |            |   0% protobuf-3.8.0       | 569 KB    | 2          |   3% protobuf-3.8.0       | 569 KB    | ########## | 100% 
+werkzeug-1.0.0       | 238 KB    |            |   0% werkzeug-1.0.0       | 238 KB    | ####       |  40% werkzeug-1.0.0       | 238 KB    | ########## | 100% 
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>set "KERAS_BACKEND=" 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>python C:\ProgramData\Anaconda3\envs\Cook_Tortoise_Imdb_project\etc\keras\load_config.py  1>temp.txt 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>set /p KERAS_BACKEND= 0<temp.txt 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>del temp.txt 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>python -c "import keras"  1>nul 2>&1 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>if errorlevel 1 (
+ver  1>nul  
+ set "KERAS_BACKEND=theano"  
+ python -c "import keras"  1>nul 2>&1 
+) 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>SET DISTUTILS_USE_SDK=1 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>SET MSSdk=1 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>SET platform= 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>IF /I [AMD64] == [amd64] set "platform=true" 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>IF /I [] == [amd64] set "platform=true" 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>if defined platform (set "VSREGKEY=HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\VisualStudio\14.0" )  ELSE (set "VSREGKEY=HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\14.0" ) 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>for /F "skip=2 tokens=2,*" %A in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\VisualStudio\14.0" /v InstallDir') do SET "VSINSTALLDIR=%B" 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>if "" == "" (set "VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\" ) 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>if "C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\" == "" (
+ECHO "WARNING: Did not find VS in registry or in VS140COMNTOOLS env var - your compiler may not work"  
+ GOTO End 
+) 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>echo "Found VS2014 at C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\" 
+"Found VS2014 at C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\"
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>SET "VS_VERSION=14.0" 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>SET "VS_MAJOR=14" 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>SET "VS_YEAR=2015" 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>set "MSYS2_ARG_CONV_EXCL=/AI;/AL;/OUT;/out" 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>set "MSYS2_ENV_CONV_EXCL=CL" 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>set "PY_VCRUNTIME_REDIST=\vcruntime140.dll" 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>set "CFLAGS= -MD -GL" 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>set "CXXFLAGS= -MD -GL" 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>set "LDFLAGS_SHARED= -LTCG ucrt.lib" 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>set "CXX=cl.exe" 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>set "CC=cl.exe" 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>IF /I [] == [win-64] (set "folder=x64" )  else (set "folder=x86" ) 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>for /F "tokens=*" %I in ('dir "C:\Program Files (x86)\Windows Kits\*1*" /B /O:N') do for %A in (%~I) do if "%A" == "8.1" set win=%A 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>for %A in (10) do if "%A" == "8.1" set win=%A 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>if "10" == "8.1" set win=10 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>for %A in (8.1) do if "%A" == "8.1" set win=%A 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>if "8.1" == "8.1" set win=8.1 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>for /F "tokens=*" %I in ('dir "C:\Program Files (x86)\Windows Kits\*1*" /B /O:N') do for %A in (%~I) do if "%A" == "10" set win=%A 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>for %A in (10) do if "%A" == "10" set win=%A 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>if "10" == "10" set win=10 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>for %A in (8.1) do if "%A" == "10" set win=%A 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>if "8.1" == "10" set win=8.1 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>setlocal enabledelayedexpansion 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>if "10" == "10" (
+for /F "tokens=*" %I in ('dir "C:\Program Files (x86)\Windows Kits\10\bin\10*" /B /O:N') do for %A in (%~I) do set last=%A  
+ set "sdk_bin_path=C:\Program Files (x86)\Windows Kits\10\bin\!last!\x86" 
+)  else (set "sdk_bin_path=C:\Program Files (x86)\Windows Kits\8.1\bin\x86" ) 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>endlocal   & set "PATH=C:\ProgramData\Anaconda3\envs\Cook_Tortoise_Imdb_project;C:\ProgramData\Anaconda3\envs\Cook_Tortoise_Imdb_project\Library\mingw-w64\bin;C:\ProgramData\Anaconda3\envs\Cook_Tortoise_Imdb_project\Library\usr\bin;C:\ProgramData\Anaconda3\envs\Cook_Tortoise_Imdb_project\Library\bin;C:\ProgramData\Anaconda3\envs\Cook_Tortoise_Imdb_project\Scripts;C:\ProgramData\Anaconda3\envs\Cook_Tortoise_Imdb_project\bin;C:\ProgramData\Anaconda3\condabin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files\Git\cmd;C:\Users\Marios\AppData\Local\GitHubDesktop\bin;C:\ProgramData\Anaconda3;C:\ProgramData\Anaconda3\Scripts;C:\Program Files\MongoDB\Server\3.6\bin;C:\Program Files\heroku\bin;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC;c:\Program Files\Docker Toolbox;.;C:\ProgramData\Anaconda3\lib\site-packages\pywin32_system32;C:\ProgramData\Anaconda3\envs\Cook_Tortoise_Imdb_project\lib\site-packages\pywin32_system32;C:\Program Files (x86)\Windows Kits\10\bin\\x86" 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>IF NOT "" == "" (
+set "INCLUDE=;"  
+ set "LIB=;"  
+ set "CMAKE_PREFIX_PATH=;" 
+) 
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>SET "CMAKE_GENERATOR=Visual Studio 14 2015 Win64"  
+
+C:\Users\Marios\Documents\GitHub\Cook_Tortoise_Movie_project\Cook_Tortoise_Movie_project_code>CALL "C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\..\..\VC\vcvarsall.bat" amd64  

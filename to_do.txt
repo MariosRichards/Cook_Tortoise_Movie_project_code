@@ -1,6 +1,7 @@
 Primary issues
 ==============
 
+* contact the-numbers.com
 
 
 
@@ -15,11 +16,13 @@ Primary issues
 
 
 
+Dataset Explorers
+=================
 
-
-
-
-
+- https://datasetsearch.research.google.com/ 
+- https://dataverse.harvard.edu/ (mostly academic)
+- kaggle datasets (lot overlap with dataworld)
+- https://data.world/ (we have a list registered in the site)
 
 
 Fun Secondary Projects
@@ -27,9 +30,71 @@ Fun Secondary Projects
 
 * infer common certification factor
     (perhaps use order?)
+    
+* inflation adjust/convert all budget/gross to common currency
+    - https://en.wikipedia.org/wiki/List_of_highest-grossing_films#Highest-grossing_films_adjusted_for_inflation
+
+* try to get "bankability" index for actors/crew -> base on the-numbers.com approach
+
+* gender column with floats to denote probability of "correctly" assigned gender
+
+* any option for trying to remove inflation from gross/budget/profit?
+
+* try to infer ethnicity based on name!!! (mucho discomfort)
+https://github.com/appeler/ethnicolr
+https://arxiv.org/pdf/1805.02109.pdf
+-> needs tensorflow -> needs to know cpu/gpu specifics
+pip install https://github.com/fo40225/tensorflow-windows-wheel/blob/master/1.9.0/cpp/libtensorflow-cpu-windows-x86_64-1.9.0-sse2.7z --no-deps --no-cache-dir
+1.9.0/cpp/libtensorflow-cpu-windows-x86_64-1.9.0-sse2.7z
+
+pip install E:\Downloads\libtensorflow-cpu-windows-x86_64-1.9.0-sse2.whl --no-deps
+pip install https://github.com/fo40225/tensorflow-windows-wheel/blob/master/1.9.0/py36/CPU/sse2/tensorflow-1.9.0-cp36-cp36m-win_amd64.whl --no-deps --no-cache-dir
+
+https://github.com/fo40225/tensorflow-windows-wheel/raw/master/1.9.0/py36/CPU/sse2/tensorflow-1.9.0-cp36-cp36m-win_amd64.whl
+
+pip install tensorflow-1.9.0-cp36-cp36m-win_amd64.whl
+FINALLY
+
+ERROR: ethnicolr 0.1.5 requires h5py>=2.7.0, which is not installed.
+ERROR: ethnicolr 0.1.5 requires Keras==2.0.5, which is not installed.
+conda install Keras==2.0.5 h5py>=2.7.0
+
+-> doesn't work!
 
 
+pip install git+https://github.com/appeler/ethnicolr.git --no-deps --no-cache-dir
+conda install Keras==2.2.4 h5py==2.9.0
+h5py==2.9.0
+Keras==2.2.4
 
 
+Still problems
+https://github.com/Theano/Theano/issues/2087
+install libpython fixes
+
+... still v slow
 
 
+TWO ISSUES
+-> getting it to either use my old AMD card (via opencl/plaidml/coriander) or using CPU
+-> getting it to use my old CPU (no AVX)
+
+
+* Awards
+https://www.kaggle.com/fmejia21/demographics-of-academy-awards-oscars-winners
+https://data.world/crowdflower/academy-awards-demographics
+https://www.kaggle.com/unanimad/screen-actors-guild-awards
+
+* Movie plots
+https://www.kaggle.com/jrobischon/wikipedia-movie-plots
+
+* Next Bechdel test
+https://www.kaggle.com/fivethirtyeight/fivethirtyeight-next-bechdel-dataset
+
+* Wikidata
+https://www.wikidata.org/wiki/Wikidata:Pywikibot_-_Python_3_Tutorial/Data_Harvest
+* Scrape Notable Names Database
+https://stackoverflow.com/questions/55464920/web-scraping-notable-names
+http://search.nndb.com/search/nndb.cgi?type=movies&query=star+wars
+* Pantheon list of notable people on dataverse
+https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/28201
